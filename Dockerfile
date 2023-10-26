@@ -53,7 +53,10 @@ RUN pip3 --no-cache-dir install -r requirements.txt -r requirements-local.txt
 RUN mkdir -p /root/cakechat/data/tensorboard
 
 WORKDIR /root/cakechat
-CMD git pull && \
-    pip3 install -r requirements.txt -r /root/cakechat/requirements-local.txt && \
-    (tensorboard --logdir=data/tensorboard 2>data/tensorboard/err.log &); \
+# CMD git pull && \
+#     pip3 install -r requirements.txt -r /root/cakechat/requirements-local.txt && \
+#     (tensorboard --logdir=data/tensorboard 2>data/tensorboard/err.log &); \
+#     /bin/bash
+
+CMD (tensorboard --logdir=data/tensorboard 2>data/tensorboard/err.log &); \
     /bin/bash
